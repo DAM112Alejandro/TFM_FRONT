@@ -1,0 +1,21 @@
+<div *ngIf="admin">
+    <p-dropdown 
+      [options]="users" 
+      [(ngModel)]="selectedUserId" 
+      optionLabel="username"
+      optionValue="id" 
+      (onChange)="onUserChange()"
+      placeholder="Selecciona un usuario"></p-dropdown>
+  </div>
+
+<div class="full-calendar-container">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+</div>
+
+<p-dialog header="Detalles del Trabajo" [(visible)]="displayDialog" [modal]="true" [closable]="true" [style]="{width: '350px'}">
+  <p class="dialog" >Selecciona el estado del trabajo</p>
+  <p-footer class="botones">
+    <button pButton label="Iniciar Trabajo" (click)="setStatusIniciado()" class="p-button-success"></button>
+    <button pButton label="Finalizar Trabajo" (click)="setStatusFinalizado()" class="p-button-danger"></button>
+  </p-footer>
+</p-dialog>

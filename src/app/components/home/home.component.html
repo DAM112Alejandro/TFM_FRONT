@@ -1,0 +1,25 @@
+<div class="card mb-5">
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+        </ng-template>
+        <ng-template pTemplate="end">
+            <p-button *ngIf="!isLoggedIn" label="Login" styleClass="p-button-link" icon="pi pi-user"
+                (click)="login()"></p-button>
+            <p-button *ngIf="!isLoggedIn" label="Registro" styleClass="p-button-link" icon="pi pi-user-plus"
+                (click)="register()"></p-button>
+            <!--<p-button *ngIf="isLoggedIn" label="{{userLogged.nombre}}" [disabled]="true" styleClass="p-button-link"></p-button>-->
+            <p-button *ngIf="isLoggedIn" label="Salir" styleClass="p-button-link" icon="pi pi-power-off"
+                (click)="volver()"></p-button>
+        </ng-template>
+    </p-menubar>
+    <main id="content" class="container  mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="center">
+            <h2 *ngIf="!isLoggedIn">
+                Hola
+            </h2>
+        </div>
+    </main>
+</div>
+<router-outlet *ngIf="isLoggedIn"></router-outlet>
+   
+

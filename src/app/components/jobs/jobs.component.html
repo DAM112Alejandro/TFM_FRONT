@@ -1,0 +1,53 @@
+<div class="button-container">
+    <button pButton class="p-button-success" icon="pi pi-plus" label="Añadir" (click)="addJob()"></button>
+  </div>
+  
+  <div class="table-container">
+    <p-table
+      [value]="jobs"
+      [paginator]="true"
+      [rows]="5"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rowsPerPageOptions]="[5, 10, 20]"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+            <th>Registro</th>
+            <th>Cita</th>
+            <th>Inicio</th>
+            <th>Finalización</th>
+            <th>Matrícula</th>
+            <th>Teléfono del cliente</th>
+            <th>Descripción del estado</th>
+            <th>Usuario</th>
+            <th>Descripción del tipo de trabajo</th>
+            <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-job>
+        <tr>
+            <td>{{ job.registration_date | date: 'short' }}</td>
+            <td>{{ job.appointment_date | date: 'short' }}</td>
+            <td>{{ job.start_date | date: 'short' }}</td>
+            <td>{{ job.finish_date | date: 'short' }}</td>
+            <td>{{ job.license_plate }}</td>
+            <td>{{ job.client_phone }}</td>
+            <td>{{ job.jobStatusDescription }}</td>
+            <td>{{ job.jobUserUsername }}</td>
+            <td>{{ job.jobWorkytpeDescription }}</td>
+          <td>
+            <p-button icon="pi pi-pencil" (click)="editJob(job.id)"></p-button>
+            <button pButton class="p-button-danger" icon="pi pi-trash" (click)="confirmDelete(job)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
+  <p-dialog [(visible)]="displayConfirmation" [modal]="true" header="Confirmar Eliminación" [closable]="false" [dismissableMask]="true">
+    <p>¿Estás seguro de que deseas eliminar el trabajo con matricula: {{job?.license_plate}} y tipo de trabajo: {{job?.jobWorkytpeDescription}}?</p>
+    <p-footer>
+      <button pButton class="p-button-danger" label="Eliminar" icon="pi pi-check" (click)="deleteJob()"></button>
+      <button pButton type="button" label="No" icon="pi pi-times" class="ui-button-secondary" (click)="cancelDelete()"></button>
+    </p-footer>
+  </p-dialog>

@@ -1,0 +1,130 @@
+/* Estilos generales del contenedor */
+.full-calendar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Estilo para las cabeceras del calendario (barra de navegación) */
+  .fc .fc-toolbar {
+    background-color: #4285F4; /* Azul estilo Google */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Botones del calendario (anterior, siguiente, hoy) */
+  .fc-button {
+    background-color: white;
+    color: #4285F4;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .fc-button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .fc-button-primary {
+    background-color: #34A853;
+    color: white;
+  }
+  
+  .fc-button-primary:hover {
+    background-color: #2a9346;
+  }
+  
+  /* Título del mes o vista */
+  .fc-toolbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Estilo para los eventos en el calendario */
+  .fc-event {
+    background-color: #34A853 !important; /* Color verde Google */
+    border: 0;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  .fc-event:hover {
+    background-color: #2a9346 !important; /* Verde oscuro al pasar el mouse */
+    cursor: pointer;
+  }
+  
+  /* Estilo para los días en el calendario */
+  .fc-daygrid-day {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+  
+  .fc-day-today {
+    background-color: #e8f0fe !important; /* Fondo azul para el día actual */
+  }
+  
+  /* Ajuste de la vista de semana/día */
+  .fc-timegrid-event {
+    background-color: #4285F4 !important;
+    color: white;
+    border-radius: 4px;
+  }
+  
+  .fc-timegrid-slot {
+    border-color: #e0e0e0;
+  }
+  
+  .fc .fc-scrollgrid {
+    border-color: #e0e0e0;
+  }
+  
+  /* Estilo para el texto de eventos */
+  .fc-event-title {
+    font-weight: bold;
+    color: white;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  /* styles.css or trabajo-calendario.component.css */
+.event-iniciado {
+  background-color: #4caf50; /* Green */
+  border-color: #388e3c; /* Darker Green */
+}
+
+.event-finalizado {
+  background-color: #f44336; /* Red */
+  border-color: #d32f2f; /* Darker Red */
+}
+.botones{
+  display: flex;
+  justify-content: space-between;
+}
+.dialog{
+  text-align: center;
+}

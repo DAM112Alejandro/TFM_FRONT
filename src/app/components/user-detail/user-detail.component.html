@@ -1,0 +1,41 @@
+
+  <h2>Editar usuario</h2>
+  <div class="form-container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="p-field">
+      <label for="username">Usuario:  </label>
+      <input id="username" type="text" pInputText formControlName="username" placeholder="Introduce tu nombre y apellidos" />
+      <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched" class="p-error">
+        El nombre del usuario es obligatorio
+      </div>
+    </div>
+
+    <div class="p-field">
+      <label for="email">Email:  </label>
+      <input id="email" type="email" pInputText formControlName="email" placeholder="Introduce tu email" />
+      <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="p-error">
+        <span *ngIf="userForm.get('email')?.errors?.['required']">El Email es obligatorio</span>
+        <span *ngIf="userForm.get('email')?.errors?.['email']">Pon un email valido</span>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <label for="rol_id">Rol:  </label>
+      <p-dropdown 
+        id="rol_id" 
+        formControlName="rol_id" 
+        [options]="rolesList" 
+        optionLabel="description" 
+        optionValue="id" 
+        placeholder="Select a role">
+      </p-dropdown>
+      <div *ngIf="userForm.get('rol_id')?.invalid && userForm.get('rol_id')?.touched" class="p-error">
+        El rol es obligatorio
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button pButton type="submit" label="Editar" [disabled]="userForm.invalid"></button>
+    </div>
+  </form>
+</div>

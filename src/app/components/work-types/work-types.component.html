@@ -1,0 +1,42 @@
+<div class="button-container">
+    <button pButton class="p-button-success" icon="pi pi-plus" label="Añadir" (click)="addWorktype()"></button>
+</div>
+
+<div class="table-container">
+    <p-table
+    [value]="worktypes"
+    [paginator]="true"
+    [rows]="5"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rowsPerPageOptions]="[5, 10, 20]"
+>
+    <ng-template pTemplate="header">
+        <tr>
+           <th>Descripción</th>
+           <th>Tiempo</th>
+           <th></th>
+           <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-worktype>
+        <tr>
+            <td>{{ worktype.description }}</td>
+            <td>{{getTime(worktype.time)}}</td>
+            <td>
+                <p-button icon="pi pi-pencil" (click)="editWorktype(worktype.id)"></p-button>
+            </td>
+            <td>
+                <button pButton class="p-button-danger" icon="pi pi-trash" (click)="confirmDelete(worktype)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
+
+<p-dialog [(visible)]="displayConfirmation" [modal]="true" header="Confirmar Eliminación" [closable]="false" [dismissableMask]="true">
+    <p>¿Estás seguro de que deseas eliminar el tipo de trabajo: {{workType?.description}} ?</p>
+    <p-footer>
+      <button pButton class="p-button-danger" label="Eliminar" icon="pi pi-check" (click)="deleteWorktype()"></button>
+      <button pButton type="button" label="No" icon="pi pi-times" class="ui-button-secondary" (click)="cancelDelete()"></button>
+    </p-footer>
+  </p-dialog>

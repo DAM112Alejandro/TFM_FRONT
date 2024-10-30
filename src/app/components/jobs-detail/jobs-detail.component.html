@@ -1,0 +1,91 @@
+<h2>{{ job ? 'Editar tarea' : 'Añadir tarea' }}</h2>
+
+<form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="form-container">
+
+    <div class="form-field">
+        <label for="appointment_date">Fecha de cita:  </label>
+        <p-calendar [showIcon]="true" dateFormat="yy-mm-dd" id="appointment_date" formControlName="appointment_date" 
+        [ngClass]="{'error-input': jobForm.get('appointment_date')?.invalid && jobForm.get('<appointment_date>')?.touched}" ></p-calendar>
+        <div *ngIf="jobForm.get('appointment_date')?.invalid && jobForm.get('appointment_date')?.touched" class="error">
+            La fecha de cita es obligatoria.
+        </div>
+    </div>
+
+    <div class="form-field">
+        <label for="start_date">Fecha y hora de inicio:  </label>
+        <p-calendar 
+            id="start_date" 
+            formControlName="start_date" 
+            dateFormat="yy-mm-dd" 
+            [showTime]="true" 
+            hourFormat="24" 
+            [showIcon]="true">
+        </p-calendar>
+        <div *ngIf="jobForm.get('start_date')?.invalid && jobForm.get('start_date')?.touched" class="error">
+            La fecha y hora de inicio son obligatorias.
+        </div>
+    </div>
+
+    <div class="form-field">
+        <label for="license_plate">Placa del vehículo:  </label>
+        <input type="text" pInputText formControlName="license_plate" placeholder="Introduce una matrícula" />
+        <div *ngIf="jobForm.get('license_plate')?.hasError('invalidLicensePlate') && jobForm.get('license_plate')?.touched" class="error">
+            La matrícula debe tener el formato 1234 ABC.
+        </div>
+    </div>
+
+    <div class="form-field">
+        <label for="client_phone">Teléfono del cliente:  </label>
+        <input type="text" pInputText formControlName="client_phone" placeholder="Introduce el número de telefono del cliente" />
+        <div *ngIf="jobForm.get('client_phone')?.hasError('invalidPhone') && jobForm.get('client_phone')?.touched" class="error">
+            El número de teléfono debe tener exactamente 9 dígitos.
+        </div>
+    </div>
+
+    <div class="form-field">
+        <label for="user_id">Usuario:  </label>
+        <p-dropdown 
+            id="user_id" 
+            formControlName="user_id" 
+            [options]="usersList" 
+            optionLabel="username" 
+            optionValue="id" 
+            placeholder="Selecciona un usuario">
+        </p-dropdown>
+        <div *ngIf="jobForm.get('user_id')?.invalid && jobForm.get('user_id')?.touched" class="p-error">
+            El usuario es obligatorio.
+        </div>
+    </div>
+
+    <div class="form-field">
+        <label for="status_id">Estado:  </label>
+        <p-dropdown 
+            id="status_id" 
+            formControlName="status_id" 
+            [options]="statusList" 
+            optionLabel="description" 
+            optionValue="id" 
+            placeholder="Selecciona un estado">
+        </p-dropdown>
+        <div *ngIf="jobForm.get('status_id')?.invalid && jobForm.get('status_id')?.touched" class="p-error">
+            El estado es obligatorio.
+        </div>
+    </div>
+
+    <div class="form-field">
+        <label for="workType_id">Tipo de trabajo:  </label>
+        <p-dropdown 
+            id="workType_id" 
+            formControlName="workType_id" 
+            [options]="workTypesList" 
+            optionLabel="description" 
+            optionValue="id" 
+            placeholder="Selecciona un tipo de trabajo">
+        </p-dropdown>
+        <div *ngIf="jobForm.get('workType_id')?.invalid && jobForm.get('workType_id')?.touched" class="p-error">
+            El tipo de trabajo es obligatorio.
+        </div>
+    </div>
+
+    <p-button type="submit" [disabled]='jobForm.invalid' label="{{ job ? 'Editar' : 'Añadir' }}"></p-button>
+</form>

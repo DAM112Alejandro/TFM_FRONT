@@ -1,0 +1,26 @@
+<div class="container w-full mt-6 max-w-full">
+    <div class="flex md:align-items-center justify-content-center mx-auto">
+        <div>
+          <div class="m-auto flex flex-column">
+            <div class="p-float-label flex flex-column gap-2 m-3">
+              <input 
+                  pInputText 
+                  id="username" 
+                  aria-describedby="username-help" 
+                  [(ngModel)]="logUser.username" /><label for="username">Correo electrónico</label>
+            </div>
+
+            <div class="p-float-label flex flex-column gap-2 m-3">
+              <p-password [(ngModel)]="logUser.password" [feedback]="true" [toggleMask]="true" class="w-full" [feedback]="false" 
+              [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"></p-password><label for="username">Contraseña</label>
+            </div>
+            
+            <button type="button" pButton class="p-button-primary mb-2" (click)="login()" label="Login"></button>
+            
+            <p-messages [(value)]="messages" >
+            </p-messages>
+          </div>
+        </div>
+      </div>
+  </div>
+  

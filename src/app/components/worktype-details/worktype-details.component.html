@@ -1,0 +1,27 @@
+
+
+    <h2>{{ workType ? 'Editar tipo de trabajo' : 'Añadir tipo de trabajo' }}</h2>
+ <div class="form-container">
+    <form [formGroup]="worktypeForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label for="description">Descripción:  </label>
+        <input type="text" pInputText formControlName="description" placeholder="Introduce una descripción" [ngClass]="{'error-input': worktypeForm.get('description')?.invalid && worktypeForm.get('description')?.touched}"  />
+        <div *ngIf="worktypeForm.get('description')?.invalid && worktypeForm.get('description')?.touched" class="error">
+          La descripción es obligatoria.
+        </div>
+      </div>
+  
+      <div class="form-field">
+        <label for="time">Tiempo (100 = 1h):  </label>
+        <p-inputNumber id="time" formControlName="time"></p-inputNumber>
+        <div *ngIf="worktypeForm.get('time')?.invalid && worktypeForm.get('time')?.touched" class="error">
+          El tiempo es obligatorio y debe ser mayor que 0.
+        </div>
+      </div>
+  
+      <div class="button-container">
+        <p-button type="submit" [disabled]='worktypeForm.invalid' label="{{ workType ? 'Editar' : 'Añadir' }}"></p-button>
+      </div>
+    </form>
+  </div>
+  
