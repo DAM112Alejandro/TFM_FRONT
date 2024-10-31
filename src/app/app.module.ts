@@ -35,6 +35,7 @@ import { JobsDetailComponent } from './components/jobs-detail/jobs-detail.compon
 import { JobsService } from './service/jobs.service';
 import { StatusService } from './service/status.service';
 import { CalendarModule } from 'primeng/calendar';
+import { RelojComponent } from './components/reloj/reloj.component';
 
 
 
@@ -53,6 +54,7 @@ import { CalendarModule } from 'primeng/calendar';
     WorktypeDetailsComponent,
     UserDetailComponent,
     JobsDetailComponent,
+    RelojComponent,
 
   ],
   imports: [
